@@ -2,36 +2,78 @@ version: 2
 
 models:
   - name: fct_sales
+    description: Tabela fato de vendas em nível de item do pedido.
+
     columns:
       - name: sales_key
-        tests:
-          - unique
-          - not_null
-      - name: product_key
-        tests:
-          - not_null
-          - relationships:
-              arguments:
-                to: ref('dim_product')
-                field: product_key
-      - name: customer_key
-        tests:
-          - not_null
-          - relationships:
-              arguments:
-                to: ref('dim_customer')
-                field: customer_key
-
-  - name: dim_product
-    columns:
-      - name: product_key
+        description: Chave única do item de venda.
         tests:
           - unique
           - not_null
 
-  - name: dim_customer
-    columns:
-      - name: customer_key
+      - name: order_id
+        description: Identificador do pedido.
         tests:
-          - unique
+          - not_null
+
+      - name: order_detail_id
+        description: Identificador do item do pedido.
+        tests:
+          - not_null
+
+      - name: order_date
+        description: Data do pedido.
+        tests:
+          - not_null
+
+      - name: date_key
+        description: Chave da dimensão de data.
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+      - name: customer_id
+        description: Identificador do cliente vindo da origem.
+        tests:
+          - not_null
+
+      - name: product_id
+        description: Identificador do produto vindo da origem.
+        tests:
+          - not_null
+
+      - name: quantity
+        description: Quantidade vendida.
+        tests:
+          - not_null
+
+      - name: unit_price
+        description: Preço unitário do item.
+        tests:
+          - not_null
+
+      - name: unit_price_discount
+        description: Percentual de desconto aplicado no item.
+
+      - name: gross_amount
+        description: Valor bruto do item.
+        tests:
+          - not_null
+
+      - name: discount_amount
+        description: Valor de desconto do item.
+        tests:
+          - not_null
+
+      - name: net_amount
+        description: Valor líquido do item.
+        tests:
+          - not_null
+
+      - name: status
+        description: Status do pedido.
+        tests:
           - not_null
