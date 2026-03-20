@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: adventure_works
+    database: fea_academy
+    schema: adventure_works
+    tables:
+      - name: sales_salesorderheader
+      - name: sales_salesorderdetail
+      - name: production_product
+      - name: production_productcategory
+      - name: production_productsubcategory
+      - name: sales_customer
+      - name: person_address
+      - name: sales_creditcard
+      - name: sales_salesreason
+      - name: sales_salesorderheadersalesreason
+      
